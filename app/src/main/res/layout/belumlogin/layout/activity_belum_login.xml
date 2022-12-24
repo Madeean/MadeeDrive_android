@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/abuabumuda"
+    tools:context=".belumlogin.BelumLogin">
+
+  <TextView
+      android:id="@+id/tv_madee_drive_belum_login"
+      android:layout_marginTop="20dp"
+      android:textColor="@color/black"
+      android:textSize="20sp"
+      android:layout_centerHorizontal="true"
+      android:text="Madee Drive"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+  <Button
+      android:id="@+id/btn_login_belum_login"
+      android:textSize="16sp"
+      android:layout_marginTop="10dp"
+      android:layout_below="@id/tv_madee_drive_belum_login"
+      android:text="Login Disini"
+      android:textAllCaps="false"
+      android:textColor="@color/abuabumuda"
+      android:background="@drawable/btn_18_blue"
+      android:layout_width="match_parent"
+      android:layout_marginBottom="20dp"
+      android:layout_height="wrap_content"/>
+
+  <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_belum_login"
+      android:layout_marginHorizontal="10dp"
+      android:layout_centerHorizontal="true"
+      android:layout_below="@id/btn_login_belum_login"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
+  </RelativeLayout>

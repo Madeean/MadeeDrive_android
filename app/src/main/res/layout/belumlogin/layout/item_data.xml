@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/radius_18"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_item_belum_login"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="18dp"
+        android:layout_marginHorizontal="12dp"
+        app:cardCornerRadius="18dp"
+
+        android:layout_width="wrap_content">
+
+        <ImageView
+            android:src="@drawable/flac"
+            android:id="@+id/iv_data_belum_login"
+            android:scaleType="centerCrop"
+            android:layout_width="200px"
+            android:adjustViewBounds="true"
+            android:layout_height="200px"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_marginTop="18dp"
+        android:layout_marginHorizontal="12dp"
+
+        android:layout_toRightOf="@id/cv_item_belum_login"
+        android:id="@+id/tv_nama_belum_login"
+        android:textSize="20sp"
+        android:textColor="@color/hitam"
+        android:text="Madee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_sinopsis_belum_login"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="12dp"
+        android:textColor="@color/hitam"
+        android:text="MAP-13"
+        android:layout_below="@id/tv_nama_belum_login"
+        android:layout_toRightOf="@id/cv_item_belum_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_lihat_belum_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="12dp"
+        android:background="@drawable/btn_18_blue"
+        android:text="Lihat"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+</RelativeLayout>
