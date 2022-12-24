@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.madeean.madeedrive.R;
 import com.madeean.madeedrive.belumlogin.BelumLogin;
+import com.madeean.madeedrive.waiting.MenungguKonfirmasi;
 
 public class Login extends AppCompatActivity {
 
@@ -41,6 +42,14 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(Login.this, Register.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login.this, MenungguKonfirmasi.class);
                 startActivity(intent);
             }
         });

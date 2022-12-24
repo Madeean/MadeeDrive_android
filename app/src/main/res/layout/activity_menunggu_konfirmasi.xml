@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/abuabumuda"
+    tools:context=".waiting.MenungguKonfirmasi">
+
+    <TextView
+        android:id="@+id/tv_madee_drive_waiting"
+        android:layout_marginVertical="50dp"
+        android:text="Madee Drive"
+        android:textSize="60sp"
+        android:textColor="@color/hitam"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+
+        android:id="@+id/tv_menunggu_konfirmasi_waiting"
+        android:layout_below="@id/tv_madee_drive_waiting"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/hitam"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:text="Menunggu konfirmasi akun dari admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="20dp"
+        android:layout_below="@id/tv_menunggu_konfirmasi_waiting"
+        android:background="@drawable/btn_18_blue"
+        android:id="@+id/btn_notify_waiting"
+        android:textColor="@color/abuabumuda"
+        android:textAllCaps="false"
+        android:text="Notify Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="20dp"
+        android:layout_below="@id/btn_notify_waiting"
+        android:background="@drawable/btn_18_blue"
+        android:id="@+id/btn_logout_waiting"
+        android:textColor="@color/abuabumuda"
+        android:backgroundTint="@color/merah"
+        android:textAllCaps="false"
+        android:text="Logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
