@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+    android:background="@color/abuabumuda"
+android:layout_height="match_parent"
+tools:context=".user.UserAdd">
+
+<EditText
+    android:id="@+id/et_nama_user_add"
+    android:inputType="textPersonName"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="20dp"
+    android:hint="Nama File"
+    android:textColorHint="@color/hitam"
+    android:textColor="@color/hitam"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+    <EditText
+        android:layout_below="@id/et_nama_user_add"
+        android:id="@+id/et_deskripsi_user_add"
+        android:inputType="textPersonName"
+        android:layout_marginHorizontal="10dp"
+        android:hint="Deskripsi File"
+        android:textColorHint="@color/hitam"
+        android:textColor="@color/hitam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Switch
+        android:checked="true"
+        android:layout_marginVertical="10dp"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="10dp"
+        android:text="Publik File"
+        android:layout_below="@id/et_deskripsi_user_add"
+        android:id="@+id/sw_user_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_file_user_add"
+        android:padding="15dp"
+        android:layout_marginVertical="15dp"
+        android:textColor="@color/abuabumuda"
+        android:background="@drawable/btn_18_blue"
+        android:layout_below="@id/sw_user_add"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="false"
+        android:text="Select File"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/abuabutua"
+        android:text="nama file"
+        android:layout_below="@id/btn_file_user_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+<com.google.android.material.bottomnavigation.BottomNavigationView
+
+    android:id="@+id/bottom_navigation"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_alignParentBottom="true"
+    app:itemBackground="@color/biru"
+    app:itemIconTint="@drawable/selector"
+    app:itemTextColor="@drawable/selector"
+    app:menu="@menu/menu_navigation" />
+
+</RelativeLayout>

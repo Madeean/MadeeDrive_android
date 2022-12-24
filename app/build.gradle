@@ -21,6 +21,7 @@ android {
                     'src/main/res',
                     'src/main/res/layout/belumlogin',
                     'src/main/res/layout/auth',
+                    'src/main/res/layout/user',
 
             ]
         }

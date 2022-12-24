@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.madeean.madeedrive.R;
 import com.madeean.madeedrive.auth.Login;
+import com.madeean.madeedrive.user.UserHome;
 
 public class MenungguKonfirmasi extends AppCompatActivity {
     Button btn_notify, btn_logout;
@@ -24,6 +25,15 @@ public class MenungguKonfirmasi extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MenungguKonfirmasi.this, Login.class);
                 startActivity(intent);
+            }
+        });
+
+        btn_notify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenungguKonfirmasi.this, UserHome.class);
+                startActivity(intent);
+                finish();
             }
         });
 
