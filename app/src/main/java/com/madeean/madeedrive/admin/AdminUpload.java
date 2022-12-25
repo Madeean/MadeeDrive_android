@@ -1,4 +1,4 @@
-package com.madeean.madeedrive.user;
+package com.madeean.madeedrive.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,25 +11,23 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.madeean.madeedrive.R;
-import com.madeean.madeedrive.belumlogin.AdapterDataBelumLogin;
+import com.madeean.madeedrive.user.AdapterDataUserUpload;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserHome extends AppCompatActivity {
+public class AdminUpload extends AppCompatActivity {
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
-    AdapterDataUserHome adapterData;
-
+    AdapterAdminUpload adapterData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_home);
-
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        setContentView(R.layout.activity_admin_upload);
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation_admin);
 
         // Set Home selected
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.upload);
 
         // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -39,17 +37,22 @@ public class UserHome extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.home:
+                        startActivity(new Intent(getApplicationContext(), AdminHome.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.plus:
-                        startActivity(new Intent(getApplicationContext(),UserAdd.class));
+                        startActivity(new Intent(getApplicationContext(), AdminAdd.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.person:
-                        startActivity(new Intent(getApplicationContext(),UserPerson.class));
+                        startActivity(new Intent(getApplicationContext(), AdminPerson.class));
                         overridePendingTransition(0,0);
+
                         return true;
                     case R.id.upload:
-                        startActivity(new Intent(getApplicationContext(),UserUpload.class));
+                        return true;
+                    case R.id.konfirmasi:
+                        startActivity(new Intent(getApplicationContext(), AdminKonfirmasi.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
@@ -57,18 +60,15 @@ public class UserHome extends AppCompatActivity {
             }
         });
 
-        recyclerView = findViewById(R.id.rv_user_home);
+        recyclerView = findViewById(R.id.rv_admin_upload);
         linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         List<String> listData = new ArrayList<>();
         for(int i = 0; i < 10; i++){
             listData.add("Nama "+i);
         }
-        adapterData = new AdapterDataUserHome(this, listData);
+        adapterData = new AdapterAdminUpload(this, listData);
         recyclerView.setAdapter(adapterData);
         adapterData.notifyDataSetChanged();
-
-
-
     }
 }

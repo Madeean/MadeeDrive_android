@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"    android:background="@color/abuabumuda"
+
+    android:layout_height="match_parent"
+    tools:context=".admin.AdminUpload">
+
+    <TextView
+        android:layout_marginVertical="10dp"
+        android:id="@+id/tv_file_sendiri_admin_upload"
+        android:textSize="25sp"
+        android:textColor="@color/hitam"
+        android:layout_centerHorizontal="true"
+        android:text="File Sendiri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/tv_file_sendiri_admin_upload"
+        android:layout_above="@id/bottom_navigation_admin"
+        android:id="@+id/rv_admin_upload"
+        android:layout_marginHorizontal="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_admin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/biru"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu_navigation_admin" />
+</RelativeLayout>

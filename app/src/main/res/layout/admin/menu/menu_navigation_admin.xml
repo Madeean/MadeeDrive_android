@@ -20,4 +20,9 @@
         android:title="Upload"
         android:icon="@drawable/upload"/>
 
+    <item
+        android:id="@+id/konfirmasi"
+        android:title="Konfirmasi"
+        android:icon="@drawable/konfirmasi"/>
+
 </menu>

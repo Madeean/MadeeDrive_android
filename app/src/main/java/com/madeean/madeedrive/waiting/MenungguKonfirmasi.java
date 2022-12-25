@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.madeean.madeedrive.R;
+import com.madeean.madeedrive.admin.AdminHome;
 import com.madeean.madeedrive.auth.Login;
 import com.madeean.madeedrive.user.UserHome;
 
@@ -31,7 +32,7 @@ public class MenungguKonfirmasi extends AppCompatActivity {
         btn_notify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MenungguKonfirmasi.this, UserHome.class);
+                Intent intent = new Intent(MenungguKonfirmasi.this, AdminHome.class);
                 startActivity(intent);
                 finish();
             }

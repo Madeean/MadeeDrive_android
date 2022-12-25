@@ -20,7 +20,7 @@ public class UserAdd extends AppCompatActivity {
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
 
         // Set Home selected
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.plus);
 
         // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -38,6 +38,10 @@ public class UserAdd extends AppCompatActivity {
                         return true;
                     case R.id.person:
                         startActivity(new Intent(getApplicationContext(),UserPerson.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.upload:
+                        startActivity(new Intent(getApplicationContext(),UserUpload.class));
                         overridePendingTransition(0,0);
                         return true;
                 }

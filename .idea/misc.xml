@@ -9,18 +9,30 @@
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/activity_belum_login.xml" value="0.22282608695652173" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/activity_main.xml" value="0.22282608695652173" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/activity_menunggu_konfirmasi.xml" value="0.2296195652173913" />
+        <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/admin/layout/activity_admin_add.xml" value="0.2296195652173913" />
+        <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/admin/layout/activity_admin_home.xml" value="0.2296195652173913" />
+        <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/admin/layout/activity_admin_konfirmasi.xml" value="0.2296195652173913" />
+        <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/admin/layout/activity_admin_person.xml" value="0.2296195652173913" />
+        <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/admin/layout/activity_admin_upload.xml" value="0.264" />
+        <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/admin/layout/item_data_admin_home.xml" value="0.2296195652173913" />
+        <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/admin/layout/item_data_admin_konfirmasi.xml" value="0.2296195652173913" />
+        <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/admin/layout/item_data_admin_upload.xml" value="0.2296195652173913" />
+        <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/admin/menu/menu_navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/auth/drawable/left.xml" value="0.1325" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/auth/layout/activity_login.xml" value="0.22282608695652173" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/auth/layout/activity_register.xml" value="0.22282608695652173" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/belum_login/layout/item_data.xml" value="0.22282608695652173" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/belumlogin/layout/activity_belum_login.xml" value="0.2296195652173913" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/belumlogin/layout/item_data.xml" value="0.2296195652173913" />
+        <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/user/drawable/plus.xml" value="0.1325" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/user/drawable/selector.xml" value="0.1325" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/user/drawable/upload.xml" value="0.1325" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/user/layout/activity_user_add.xml" value="0.264" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/user/layout/activity_user_home.xml" value="0.2296195652173913" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/user/layout/activity_user_person.xml" value="0.2296195652173913" />
+        <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/user/layout/activity_user_upload.xml" value="0.2296195652173913" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/user/layout/item_data_user_home.xml" value="0.2296195652173913" />
+        <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/user/layout/item_data_user_upload.xml" value="0.2296195652173913" />
         <entry key="..\:/PROJECT/MadeeDrive/madeedrive-android/app/src/main/res/layout/user/menu/menu_navigation.xml" value="0.20854700854700856" />
       </map>
     </option>
