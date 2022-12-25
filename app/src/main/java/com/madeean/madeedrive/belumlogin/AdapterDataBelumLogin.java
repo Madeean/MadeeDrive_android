@@ -13,15 +13,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.madeean.madeedrive.R;
+import com.madeean.madeedrive.model.ModelIsiData;
 
 import java.util.List;
 
 public class AdapterDataBelumLogin extends RecyclerView.Adapter<AdapterDataBelumLogin.HolderData> {
-    List<String> listData;
+    List<ModelIsiData> listData;
     LayoutInflater layoutInflater;
 
 
-    public AdapterDataBelumLogin(Context context, List<String> listData) {
+    public AdapterDataBelumLogin(Context context, List<ModelIsiData> listData) {
         this.listData = listData;
         this.layoutInflater = LayoutInflater.from(context);
 
@@ -37,7 +38,7 @@ public class AdapterDataBelumLogin extends RecyclerView.Adapter<AdapterDataBelum
     @Override
     public void onBindViewHolder(@NonNull AdapterDataBelumLogin.HolderData holder, int position) {
         holder.imageView.setImageResource(R.drawable.flac);
-        holder.nama.setText(listData.get(position));
+        holder.nama.setText(listData.get(position).getJudul());
         holder.sinopsis.setText("Sinopsis");
 
         holder.btn_lihat.setOnClickListener(view -> {
