@@ -56,4 +56,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <ProgressBar
+        android:id="@+id/pb_auth_waiting"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </RelativeLayout>

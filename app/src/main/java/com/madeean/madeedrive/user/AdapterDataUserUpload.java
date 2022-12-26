@@ -13,15 +13,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.madeean.madeedrive.R;
+import com.madeean.madeedrive.model.ModelIsiData;
 
 import java.util.List;
 
 public class AdapterDataUserUpload extends RecyclerView.Adapter<AdapterDataUserUpload.HolderData> {
-    List<String> listData;
+    List<ModelIsiData> listData;
     LayoutInflater layoutInflater;
 
 
-    public AdapterDataUserUpload(Context context, List<String> listData) {
+    public AdapterDataUserUpload(Context context, List<ModelIsiData> listData) {
         this.listData = listData;
         this.layoutInflater = LayoutInflater.from(context);
 
@@ -37,7 +38,7 @@ public class AdapterDataUserUpload extends RecyclerView.Adapter<AdapterDataUserU
     @Override
     public void onBindViewHolder(@NonNull AdapterDataUserUpload.HolderData holder, int position) {
         holder.imageView.setImageResource(R.drawable.flac);
-        holder.nama.setText(listData.get(position));
+        holder.nama.setText(listData.get(position).getJudul());
         holder.sinopsis.setText("Sinopsis");
 
         holder.btn_lihat.setOnClickListener(view -> {
@@ -48,7 +49,11 @@ public class AdapterDataUserUpload extends RecyclerView.Adapter<AdapterDataUserU
 
     @Override
     public int getItemCount() {
-        return listData.size();
+        if(listData.size() > 0){
+            return listData.size();
+        }else{
+            return 0;
+        }
     }
 
     public class HolderData extends RecyclerView.ViewHolder {

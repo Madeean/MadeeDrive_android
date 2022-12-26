@@ -36,4 +36,13 @@ public interface ApiRequest {
     Call<ModelLogout> logout(
             @Header("Authorization") String token
     );
+    @GET("buku")
+    Call<ModelBuku> getBukuSudahLogin(
+            @Header("Authorization") String token
+    );
+
+    @GET("buku/sendiri")
+    Call<ModelBuku> getBukuSendiri(
+            @Header("Authorization") String token
+    );
 }

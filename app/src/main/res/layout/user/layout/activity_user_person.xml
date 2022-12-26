@@ -27,6 +27,7 @@ tools:context=".user.UserPerson">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <Button
+        android:id="@+id/btn_logout_user"
         android:layout_marginVertical="20dp"
         android:layout_below="@id/tv_email_user_person"
         android:layout_centerHorizontal="true"

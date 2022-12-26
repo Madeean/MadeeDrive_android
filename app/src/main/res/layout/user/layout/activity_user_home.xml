@@ -9,12 +9,13 @@ android:layout_height="match_parent"
 tools:context=".user.UserHome">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_above="@id/bottom_navigation"
         android:id="@+id/rv_user_home"
-        android:layout_marginHorizontal="10dp"
-        android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="10dp" />
 
 <com.google.android.material.bottomnavigation.BottomNavigationView
     android:id="@+id/bottom_navigation"
