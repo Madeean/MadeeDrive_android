@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,78 +8,96 @@
     android:layout_height="match_parent"
     tools:context=".auth.Login">
 
-    <ImageView
-        android:id="@+id/iv_back"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="20dp"
-        android:src="@drawable/left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/tv_login"
-        android:layout_marginVertical="60sp"
-        android:layout_centerHorizontal="true"
-        android:textSize="40sp"
-        android:textColor="@color/hitam"
-        android:text="Madee Drive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
     <RelativeLayout
-        android:layout_marginHorizontal="20dp"
-        android:backgroundTint="@color/abuabutua"
-        android:background="@drawable/radius_18"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/tv_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
 
-        <EditText
-            android:id="@+id/et_email"
-            android:layout_marginHorizontal="20sp"
-            android:layout_marginVertical="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/hitam"
-            android:textColorHint="@color/hitam"/>
-        <EditText
-            android:layout_below="@id/et_email"
-            android:id="@+id/et_password"
-            android:layout_marginHorizontal="20sp"
-            android:layout_marginVertical="10sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textColor="@color/hitam"
-            android:textColorHint="@color/hitam"/>
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn_login_auth"
-            android:textColor="@color/white"
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="20dp"
-            android:background="@drawable/btn_18_blue"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/et_password"
-            android:text="Login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:src="@drawable/left" />
 
-        <Button
-            android:backgroundTint="@color/hijau"
-            android:id="@+id/btn_register_auth"
-            android:textColor="@color/hitam"
-            android:layout_marginVertical="5dp"
-            android:background="@drawable/btn_18_blue"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/btn_login_auth"
-            android:text="Register"
+        <TextView
+            android:id="@+id/tv_login"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="60sp"
+            android:text="Madee Drive"
+            android:textColor="@color/hitam"
+            android:textSize="40sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_login"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/radius_18"
+            android:backgroundTint="@color/abuabutua">
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20sp"
+                android:layout_marginVertical="20sp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/hitam"
+                android:textColorHint="@color/hitam" />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_email"
+                android:layout_marginHorizontal="20sp"
+                android:layout_marginVertical="10sp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="@color/hitam"
+                android:textColorHint="@color/hitam" />
+
+            <Button
+                android:id="@+id/btn_login_auth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_password"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/btn_18_blue"
+                android:text="Login"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_register_auth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_login_auth"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/btn_18_blue"
+                android:backgroundTint="@color/hijau"
+                android:text="Register"
+                android:textColor="@color/hitam" />
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
+
+    <ProgressBar
+        android:indeterminateTint="@color/hitam"
+        android:visibility="invisible"
+        android:id="@+id/pb_auth_login"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
