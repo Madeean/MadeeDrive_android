@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -33,10 +35,27 @@ public class UserHome extends AppCompatActivity {
     AdapterDataUserHome adapterData;
     String tokenSP;
     List<ModelIsiData> listData;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private ProgressBar pbdata;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
+
+        swipeRefreshLayout = findViewById(R.id.swipe_user_home);
+        pbdata = findViewById(R.id.pb_user_home);
+        pbdata.bringToFront();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+                getData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
 
         SharedPreferences sh = getSharedPreferences("MadeeDrive", Context.MODE_PRIVATE);
         tokenSP = sh.getString("token", "");
@@ -89,6 +108,7 @@ public class UserHome extends AppCompatActivity {
     }
 
     private void getData() {
+        pbdata.setVisibility(ProgressBar.VISIBLE);
         String token = "Bearer "+tokenSP;
         ApiRequest api = Server.konekRetrofit().create(ApiRequest.class);
          Call<ModelBuku> tampildata = api.getBukuSudahLogin(token);
@@ -96,18 +116,24 @@ public class UserHome extends AppCompatActivity {
              @Override
              public void onResponse(Call<ModelBuku> call, Response<ModelBuku> response) {
                     if(response.isSuccessful()){
+                        pbdata.setVisibility(ProgressBar.INVISIBLE);
                         listData = response.body().getData();
                         adapterData = new AdapterDataUserHome(UserHome.this, listData);
                         recyclerView.setAdapter(adapterData);
                         adapterData.notifyDataSetChanged();
                     }else{
                         Toast.makeText(UserHome.this, "gagal mendapatkan data", Toast.LENGTH_SHORT).show();
+                        pbdata.setVisibility(ProgressBar.INVISIBLE);
+
                     }
              }
 
              @Override
              public void onFailure(Call<ModelBuku> call, Throwable t) {
+                 System.out.println("ERROR : "+t.getMessage());
                     Toast.makeText(UserHome.this, "gagal menghubungi server", Toast.LENGTH_SHORT).show();
+                 pbdata.setVisibility(ProgressBar.INVISIBLE);
+
              }
          });
     }

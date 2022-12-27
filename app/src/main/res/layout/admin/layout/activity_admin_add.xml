@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"/>
     <EditText
         android:layout_below="@id/et_nama_admin_add"
-        android:id="@+id/et_deskripsi_user_add"
+        android:id="@+id/et_deskripsi_admin_add"
         android:inputType="textPersonName"
         android:layout_marginHorizontal="10dp"
         android:hint="Deskripsi File"
@@ -34,7 +34,7 @@
         android:textSize="20sp"
         android:layout_marginHorizontal="10dp"
         android:text="Publik File"
-        android:layout_below="@id/et_deskripsi_user_add"
+        android:layout_below="@id/et_deskripsi_admin_add"
         android:id="@+id/sw_admin_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

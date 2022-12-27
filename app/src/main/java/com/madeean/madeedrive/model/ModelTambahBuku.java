@@ -1,21 +1,12 @@
 package com.madeean.madeedrive.model;
 
-public class ModelIsiData {
-    int id;
-    int user_id;
-    String judul;
-    String sinopsis;
-    String foto_buku;
-    int publik;
-    String shorturl;
-
-    public String getShorturl() {
-        return shorturl;
-    }
-
-    public void setShorturl(String shorturl) {
-        this.shorturl = shorturl;
-    }
+public class ModelTambahBuku {
+    private int id;
+    private int user_id;
+    private String judul;
+    private String sinopsis;
+    private String foto_buku;
+    private int publik;
 
     public int getId() {
         return id;

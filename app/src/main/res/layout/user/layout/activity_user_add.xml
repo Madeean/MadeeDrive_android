@@ -9,16 +9,18 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".user.UserAdd">
 
-<EditText
-    android:id="@+id/et_nama_user_add"
-    android:inputType="textPersonName"
-    android:layout_marginHorizontal="10dp"
-    android:layout_marginVertical="20dp"
-    android:hint="Nama File"
-    android:textColorHint="@color/hitam"
-    android:textColor="@color/hitam"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+
+
+    <EditText
+        android:id="@+id/et_nama_user_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="20dp"
+        android:hint="Nama File"
+        android:inputType="textPersonName"
+        android:textColor="@color/hitam"
+        android:textColorHint="@color/hitam" />
     <EditText
         android:layout_below="@id/et_nama_user_add"
         android:id="@+id/et_deskripsi_user_add"
@@ -31,47 +33,48 @@ tools:context=".user.UserAdd">
         android:layout_height="wrap_content"/>
 
     <Switch
-        android:checked="true"
-        android:layout_marginVertical="10dp"
-        android:textSize="20sp"
-        android:layout_marginHorizontal="10dp"
-        android:text="Publik File"
-        android:layout_below="@id/et_deskripsi_user_add"
         android:id="@+id/sw_user_add"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_deskripsi_user_add"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"
+        android:checked="true"
+        android:text="Publik File"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btn_file_user_add"
-        android:padding="15dp"
-        android:layout_marginVertical="15dp"
-        android:textColor="@color/abuabumuda"
-        android:background="@drawable/btn_18_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/sw_user_add"
         android:layout_centerHorizontal="true"
-        android:textAllCaps="false"
+        android:layout_marginVertical="15dp"
+        android:background="@drawable/btn_18_blue"
+        android:padding="15dp"
         android:text="Select File"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:textAllCaps="false"
+        android:textColor="@color/abuabumuda" />
 
     <TextView
         android:id="@+id/tv_nama_file_user_add"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/abuabutua"
-        android:text="nama file"
-        android:layout_below="@id/btn_file_user_add"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_file_user_add"
+        android:layout_centerHorizontal="true"
+        android:text="nama file"
+        android:textColor="@color/abuabutua" />
 
     <Button
-        android:textColor="@color/abuabumuda"
+        android:id="@+id/btn_upload_user_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_nama_file_user_add"
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/btn_18_blue"
-        android:textAllCaps="false"
         android:text="Upload"
-        android:layout_below="@id/tv_nama_file_user_add"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:textAllCaps="false"
+        android:textColor="@color/abuabumuda" />
 
 <com.google.android.material.bottomnavigation.BottomNavigationView
 

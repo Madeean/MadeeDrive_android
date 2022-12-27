@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -32,10 +34,28 @@ public class UserUpload extends AppCompatActivity {
     AdapterDataUserUpload adapterData;
     String tokenSP;
     List<ModelIsiData> listData;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private ProgressBar pbdata;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_upload);
+
+        swipeRefreshLayout = findViewById(R.id.swipe_user_upload);
+        pbdata = findViewById(R.id.pb_user_upload);
+        pbdata.bringToFront();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+                getData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
         SharedPreferences sh = getSharedPreferences("MadeeDrive", Context.MODE_PRIVATE);
         tokenSP = sh.getString("token", "");
 
@@ -85,6 +105,7 @@ public class UserUpload extends AppCompatActivity {
     }
 
     private void getData() {
+        pbdata.setVisibility(ProgressBar.VISIBLE);
         String token = "Bearer "+tokenSP;
         ApiRequest api = Server.konekRetrofit().create(ApiRequest.class);
         Call<ModelBuku> tampildata = api.getBukuSendiri(token);
@@ -92,17 +113,20 @@ public class UserUpload extends AppCompatActivity {
             @Override
             public void onResponse(Call<ModelBuku> call, Response<ModelBuku> response) {
                 if(response.isSuccessful()){
+                    pbdata.setVisibility(ProgressBar.INVISIBLE);
                     listData = response.body().getData();
                     adapterData = new AdapterDataUserUpload(UserUpload.this, listData);
                     recyclerView.setAdapter(adapterData);
                     adapterData.notifyDataSetChanged();
                 }else{
+                    pbdata.setVisibility(ProgressBar.INVISIBLE);
                     Toast.makeText(UserUpload.this, "gagal mendapatkan data", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ModelBuku> call, Throwable t) {
+                pbdata.setVisibility(ProgressBar.INVISIBLE);
                 Toast.makeText(UserUpload.this, "gagal menghubungi server", Toast.LENGTH_SHORT).show();
             }
         });

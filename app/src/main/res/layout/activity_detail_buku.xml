@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/abuabumuda"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/abuabumuda"
+        tools:context=".DetailBuku">
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/image_detail_buku"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginHorizontal="12dp"
+            app:cardCornerRadius="18dp"
+
+            android:layout_width="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_detail_buku"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:adjustViewBounds="true"
+                android:layout_height="200dp"
+
+                android:src="@drawable/flac" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_judul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_detail_buku"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="6dp"
+            android:text="Judul"
+            android:textAlignment="center"
+            android:textColor="@color/hitam"
+            android:textSize="26sp" />
+
+        <TextView
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="2dp"
+            android:textSize="15sp"
+            android:id="@+id/tv_sinopsis"
+            android:layout_below="@id/tv_judul"
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"
+            android:text="Sinopsis"
+            android:textColor="@color/hitam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+
+            android:id="@+id/btn_download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_sinopsis"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="18dp"
+            android:background="@drawable/btn_18_blue"
+            android:text="Download"
+            android:textColor="@color/abuabumuda" />
+
+        <RelativeLayout
+            android:id="@+id/RL_shortlink"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_below="@id/btn_download"
+            android:background="@color/abuabutua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:text=""
+                android:enabled="false"
+                android:id="@+id/et_shortlink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:padding="12dp"
+                android:scrollHorizontally="true"
+                android:maxLines="2"
+                android:textColor="@color/hitam" />
+
+            <Button
+                android:id="@+id/btn_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_shortlink"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/btn_18_blue"
+                android:backgroundTint="@color/hijau"
+                android:padding="20dp"
+                android:text="Copy Short Link"
+                android:textAllCaps="false" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:paddingVertical="20dp"
+            android:layout_marginVertical="20dp"
+            android:id="@+id/details_box"
+            android:layout_below="@id/RL_shortlink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/file_name"
+                android:layout_centerHorizontal="true"
+                android:textSize="16sp"
+                android:textColor="@color/hitam"
+                android:text="Ready to donwload ?"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ProgressBar
+                android:id="@+id/progress_horizontal"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:progressTint="@color/merah"
+                android:layout_below="@id/file_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UnusedAttribute"/>
+
+            <TextView
+                android:textSize="16sp"
+                android:textColor="@color/hitam"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/progress_horizontal"
+                android:layout_marginHorizontal="5dp"
+                android:id="@+id/downloading_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btn_start"
+                android:layout_marginHorizontal="20dp"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/abuabumuda"
+                android:background="@drawable/btn_18_blue"
+                android:layout_below="@id/downloading_percentage"
+                android:textAllCaps="false"
+                android:text="Start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:backgroundTint="@color/hijau"
+                android:id="@+id/btn_stop"
+                android:layout_marginHorizontal="20dp"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/hitam"
+                android:background="@drawable/btn_18_blue"
+                android:layout_below="@id/downloading_percentage"
+                android:textAllCaps="false"
+                android:text="Cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/hitam"
+                android:textSize="14sp"
+                android:layout_marginVertical="15dp"
+                android:layout_below="@id/btn_start"
+                android:id="@+id/txt_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>
