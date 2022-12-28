@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.madeean.madeedrive.R;
 import com.madeean.madeedrive.model.ModelIsiData;
 
@@ -37,9 +38,25 @@ public class AdapterDataBelumLogin extends RecyclerView.Adapter<AdapterDataBelum
 
     @Override
     public void onBindViewHolder(@NonNull AdapterDataBelumLogin.HolderData holder, int position) {
-        holder.imageView.setImageResource(R.drawable.flac);
         holder.nama.setText(listData.get(position).getJudul());
-        holder.sinopsis.setText("Sinopsis");
+        holder.sinopsis.setText(listData.get(position).getSinopsis());
+
+        String path = listData.get(position).getFoto_buku();
+        String extension = path.substring(path.lastIndexOf("."));
+        System.out.println("EXTENSION : "+ listData.get(position).getShorturl());
+        if(extension.equals(".pdf")) {
+            holder.imageView.setImageResource(R.drawable.pdf);
+        }else if(extension.equals(".flac")){
+            holder.imageView.setImageResource(R.drawable.flac);
+        }else if(extension.equals(".mp4")) {
+            holder.imageView.setImageResource(R.drawable.mp4);
+        }else if(extension.equals(".zip")) {
+            holder.imageView.setImageResource(R.drawable.zip);
+        }else if(extension.equals(".jpg") || extension.equals(".png") || extension.equals(".jpeg")){
+            Glide.with(holder.imageView.getContext()).load(listData.get(position).getFoto_buku()).into(holder.imageView);
+        }else{
+            holder.imageView.setImageResource(R.drawable.dummy);
+        }
 
         holder.btn_lihat.setOnClickListener(view -> {
             Toast.makeText(holder.btn_lihat.getContext(), "Login Dahulu", Toast.LENGTH_SHORT).show();
