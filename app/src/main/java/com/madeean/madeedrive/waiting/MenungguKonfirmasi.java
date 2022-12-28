@@ -59,12 +59,32 @@ public class MenungguKonfirmasi extends AppCompatActivity {
         btn_notify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MenungguKonfirmasi.this, AdminHome.class);
-                startActivity(intent);
-                finish();
+                
+                    notifyHandle(tokenSP);
+                
             }
         });
 
+    }
+
+    private void notifyHandle(String tokenSP) {
+        ApiRequest api = Server.konekRetrofit().create(ApiRequest.class);
+        Call<ModelLogout> tampilData = api.notifyAdmin(tokenSP);
+        tampilData.enqueue(new Callback<ModelLogout>() {
+            @Override
+            public void onResponse(Call<ModelLogout> call, Response<ModelLogout> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(MenungguKonfirmasi.this, "berhasil mengirim notif", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MenungguKonfirmasi.this, "gagal mengirim notif", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ModelLogout> call, Throwable t) {
+                Toast.makeText(MenungguKonfirmasi.this, "gagal menghubungi server", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void logoutHandle(String tokens){

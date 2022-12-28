@@ -1,5 +1,6 @@
 package com.madeean.madeedrive.belumlogin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,9 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.madeean.madeedrive.R;
 import com.madeean.madeedrive.api.ApiRequest;
 import com.madeean.madeedrive.api.Server;
@@ -37,10 +41,15 @@ public class BelumLogin extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
     private ProgressBar pbdata;
 
+    String tokenFCM;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_belum_login);
+
+
+
 
         swipeRefreshLayout = findViewById(R.id.swipe_belum_login);
         pbdata = findViewById(R.id.pb_belum_login);

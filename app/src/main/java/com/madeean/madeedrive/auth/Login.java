@@ -124,6 +124,10 @@ public class Login extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
+
+                    if(data.getKonfirmasi() == 2){
+                        Toast.makeText(Login.this, "Akun anda telah di banned", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     Toast.makeText(Login.this, "Gagal Login", Toast.LENGTH_SHORT).show();
                     pb_auth_login.setVisibility(View.INVISIBLE);

@@ -1,6 +1,7 @@
 package com.madeean.madeedrive.admin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +13,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.madeean.madeedrive.DetailBuku;
 import com.madeean.madeedrive.R;
+import com.madeean.madeedrive.model.ModelIsiData;
 import com.madeean.madeedrive.user.AdapterDataUserHome;
 
 import java.util.List;
 
 public class AdapterDataAdminHome extends RecyclerView.Adapter<AdapterDataAdminHome.HolderData> {
-    List<String> listData;
+    List<ModelIsiData> listData;
     LayoutInflater layoutInflater;
 
 
-    public AdapterDataAdminHome(Context context, List<String> listData) {
+    public AdapterDataAdminHome(Context context, List<ModelIsiData> listData) {
         this.listData = listData;
         this.layoutInflater = LayoutInflater.from(context);
 
@@ -37,12 +41,37 @@ public class AdapterDataAdminHome extends RecyclerView.Adapter<AdapterDataAdminH
 
     @Override
     public void onBindViewHolder(@NonNull AdapterDataAdminHome.HolderData holder, int position) {
-        holder.imageView.setImageResource(R.drawable.flac);
-        holder.nama.setText(listData.get(position));
-        holder.sinopsis.setText("Sinopsis");
+        String path = listData.get(position).getFoto_buku();
+        String extension = path.substring(path.lastIndexOf("."));
+        System.out.println("EXTENSION : "+ listData.get(position).getShorturl());
+        if(extension.equals(".pdf")) {
+            holder.imageView.setImageResource(R.drawable.pdf);
+        }else if(extension.equals(".flac")){
+            holder.imageView.setImageResource(R.drawable.flac);
+        }else if(extension.equals(".mp4")) {
+            holder.imageView.setImageResource(R.drawable.mp4);
+        }else if(extension.equals(".zip")) {
+            holder.imageView.setImageResource(R.drawable.zip);
+        }else if(extension.equals(".jpg") || extension.equals(".png") || extension.equals(".jpeg")){
+            Glide.with(holder.imageView.getContext()).load(listData.get(position).getFoto_buku()).into(holder.imageView);
+        }else{
+            holder.imageView.setImageResource(R.drawable.dummy);
+        }
+        holder.nama.setText(listData.get(position).getJudul());
+        holder.sinopsis.setText(listData.get(position).getSinopsis());
+
 
         holder.btn_lihat.setOnClickListener(view -> {
-            Toast.makeText(holder.btn_lihat.getContext(), "Login Dahulu", Toast.LENGTH_SHORT).show();
+            String foto_buku = listData.get(position).getFoto_buku();
+            String shortlink = listData.get(position).getShorturl();
+            String judul = listData.get(position).getJudul();
+            String sinopsis = listData.get(position).getSinopsis();
+            Intent intent = new Intent(view.getContext(), DetailBuku.class);
+            intent.putExtra("foto_buku", foto_buku);
+            intent.putExtra("shortlink", shortlink);
+            intent.putExtra("judul", judul);
+            intent.putExtra("sinopsis", sinopsis);
+            view.getContext().startActivity(intent);
         });
 
     }

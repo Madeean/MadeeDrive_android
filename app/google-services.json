@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "284941478602",
+    "project_id": "madeedriveandroidjava",
+    "storage_bucket": "madeedriveandroidjava.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284941478602:android:092d081ca7d1a3c274e233",
+        "android_client_info": {
+          "package_name": "com.madeean.madeedrive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "284941478602-1iika1r6e5on0asqbmrc9kugd2imh6mp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAj_PIogdrvmOu-oruBEikE7N9iCLsv7ic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "284941478602-1iika1r6e5on0asqbmrc9kugd2imh6mp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
