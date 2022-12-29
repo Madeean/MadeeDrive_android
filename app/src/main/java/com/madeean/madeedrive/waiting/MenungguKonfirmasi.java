@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +30,7 @@ public class MenungguKonfirmasi extends AppCompatActivity {
     Button btn_notify, btn_logout;
     ProgressBar pb_auth_waiting;
     String tokenSP;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,5 +122,29 @@ public class MenungguKonfirmasi extends AppCompatActivity {
 
             }
         });
+    }
+
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+
+
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            logoutHandle(tokenSP);
+            moveTaskToBack(true);
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "tekan kembali dua kali, jika ingin menutup aplikasi", Toast.LENGTH_SHORT).show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }

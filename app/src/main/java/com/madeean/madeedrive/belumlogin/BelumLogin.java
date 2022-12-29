@@ -6,13 +6,24 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -24,6 +35,7 @@ import com.madeean.madeedrive.model.ModelBuku;
 import com.madeean.madeedrive.model.ModelIsiData;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -43,11 +55,65 @@ public class BelumLogin extends AppCompatActivity {
 
     String tokenFCM;
 
+    private static final String TAG = "BANNER_AD_TAG";
+
+    private AdView adView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_belum_login);
 
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+                Log.d(TAG, "onInitializationComplete: ");
+            }
+        });
+
+//        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setMaxAdContentRating()).build());
+
+        adView = findViewById(R.id.bannerAd_belum_login);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+        adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+                Log.d(TAG, "onAdClicked: ");
+            }
+
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+                Log.d(TAG, "onAdClosed: ");
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                Log.d(TAG, "onAdFailedToLoad: "+loadAdError.getMessage());
+            }
+
+            @Override
+            public void onAdImpression() {
+                super.onAdImpression();
+                Log.d(TAG, "onAdImpression: ");
+            }
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d(TAG, "onAdLoaded: ");
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+                Log.d(TAG, "onAdOpened: ");
+            }
+        });
 
 
 
@@ -60,7 +126,7 @@ public class BelumLogin extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(BelumLogin.this, Login.class);
                 startActivity(intent);
-
+                finish();
             }
         });
 
@@ -87,9 +153,29 @@ public class BelumLogin extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        if(adView != null){
+            adView.pause();
+        }
+        super.onPause();
+
+    }
+
+    @Override
     protected void onResume() {
+        if (adView != null){
+            adView.resume();
+        }
         super.onResume();
         getData();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (adView != null){
+            adView.destroy();
+        }
+        super.onDestroy();
     }
 
     private void getData() {
@@ -118,7 +204,7 @@ public class BelumLogin extends AppCompatActivity {
             public void onFailure(Call<ModelBuku> call, Throwable t) {
                 pbdata.setVisibility(View.INVISIBLE);
 
-                Toast.makeText(BelumLogin.this, "Gagal menghubungi server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BelumLogin.this, "Cek koneksi internet anda", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -57,6 +59,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Login.this, BelumLogin.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -66,6 +69,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(Login.this, Register.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -106,6 +110,8 @@ public class Login extends AppCompatActivity {
                     myEdit.putString("name", data.getName());
                     myEdit.putString("email", data.getEmail());
                     myEdit.putInt("id", data.getId());
+                    myEdit.putInt("konfirmasi", data.getKonfirmasi());
+                    myEdit.putInt("admin", data.getAdmin());
                     myEdit.apply();
                     pb_auth_login.setVisibility(View.INVISIBLE);
                     if(data.getKonfirmasi() == 0){
@@ -143,5 +149,10 @@ public class Login extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        return;
     }
 }

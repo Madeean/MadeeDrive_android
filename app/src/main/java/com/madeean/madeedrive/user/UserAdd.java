@@ -27,6 +27,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.FileUtils;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -207,6 +209,7 @@ public class UserAdd extends AppCompatActivity {
                     Toast.makeText(UserAdd.this, "Berhasil Upload", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(UserAdd.this, UserHome.class);
                     startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(UserAdd.this, "Gagal Upload", Toast.LENGTH_SHORT).show();
                 }
@@ -220,7 +223,28 @@ public class UserAdd extends AppCompatActivity {
         });
     }
 
+    boolean doubleBackToExitPressedOnce = false;
 
+    @Override
+    public void onBackPressed() {
+
+
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            moveTaskToBack(true);
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "tekan kembali dua kali, jika ingin menutup aplikasi", Toast.LENGTH_SHORT).show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
 
 }
 

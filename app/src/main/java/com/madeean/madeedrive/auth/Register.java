@@ -54,7 +54,6 @@ public class Register extends AppCompatActivity {
 
                         // Get new FCM registration token
                         String token = task.getResult();
-                        Toast.makeText(Register.this, "token "+token, Toast.LENGTH_SHORT).show();
                         // Log and toast
                         tokenFCM = token;
                         System.out.println("tokenFCM: "+tokenFCM);
@@ -66,6 +65,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Register.this, Login.class);
                 startActivity(intent);
+                finish();
             }
         });
 

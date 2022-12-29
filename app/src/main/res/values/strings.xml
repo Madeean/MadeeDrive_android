@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">madeedrive</string>
+
+    <string name="app_id_test">ca-app-pub-3940256099942544~3347511713</string>
+
+    <string name="app_id_prod">ca-app-pub-3875463801688870~2817140573</string>
+
+    <string name="banner_ad_test">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_ad_prod">ca-app-pub-3875463801688870/8046799419</string>
 </resources>
