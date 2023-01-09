@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -31,6 +32,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,6 +46,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jaiselrahman.filepicker.activity.FilePickerActivity;
 import com.jaiselrahman.filepicker.config.Configurations;
 import com.jaiselrahman.filepicker.model.MediaFile;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.madeean.madeedrive.R;
 import com.madeean.madeedrive.api.ApiRequest;
 import com.madeean.madeedrive.api.Server;
@@ -59,6 +66,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -111,16 +119,10 @@ public class UserAdd extends AppCompatActivity {
         btn_file_user_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserAdd.this, FilePickerActivity.class);
-                intent.putExtra(FilePickerActivity.CONFIGS, new Configurations.Builder()
-                        .setCheckPermission(true)
-                        .setShowImages(true)
-                        .enableImageCapture(true)
-.setShowVideos(true)
-                                .setShowAudios(true)
-                                .setShowFiles(true)
-                        .build());
-                startActivityForResult(intent, FILE_SELECT_CODE);
+
+                requestPermissions();
+
+
             }
         });
 
@@ -171,6 +173,80 @@ public class UserAdd extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    private void requestPermissions() {
+        Dexter.withActivity(this)
+                // below line is use to request the number of permissions which are required in our app.
+                .withPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        // below is the list of permissions
+                        Manifest.permission.MANAGE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)
+                // after adding permissions we are calling an with listener method.
+                .withListener(new MultiplePermissionsListener() {
+                    @Override
+                    public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
+                        // this method is called when all permissions are granted
+                        if (multiplePermissionsReport.areAllPermissionsGranted()) {
+                            // do you work now
+                            Intent intent = new Intent(UserAdd.this, FilePickerActivity.class);
+                            intent.putExtra(FilePickerActivity.CONFIGS, new Configurations.Builder()
+                            .setCheckPermission(true)
+                            .setShowImages(true)
+                            .enableImageCapture(true)
+                            .setShowVideos(true)
+                            .setShowAudios(true)
+                            .setShowFiles(true)
+                            .build());
+                            startActivityForResult(intent, FILE_SELECT_CODE);
+                            Toast.makeText(UserAdd.this, "All the permissions are granted..", Toast.LENGTH_SHORT).show();
+                        }
+                        // check for permanent denial of any permission
+                        if (multiplePermissionsReport.isAnyPermissionPermanentlyDenied()) {
+                            // permission is denied permanently, we will show user a dialog message.
+                            showSettingsDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {
+                        // this method is called when user grants some permission and denies some of them.
+                        permissionToken.continuePermissionRequest();
+                    }
+                }).withErrorListener(error -> {
+                    // we are displaying a toast message for error message.
+                    Toast.makeText(getApplicationContext(), "Error occurred! ", Toast.LENGTH_SHORT).show();
+                })
+                // below line is use to run the permissions on same thread and to check the permissions
+                .onSameThread().check();
+    }
+
+    private void showSettingsDialog() {
+        // we are displaying an alert dialog for permissions
+        AlertDialog.Builder builder = new AlertDialog.Builder(UserAdd.this);
+
+        // below line is the title for our alert dialog.
+        builder.setTitle("Need Permissions");
+
+        // below line is our message for our dialog
+        builder.setMessage("This app needs permission to use this feature. You can grant them in app settings.");
+        builder.setPositiveButton("GOTO SETTINGS", (dialog, which) -> {
+            // this method is called on click on positive button and on clicking shit button
+            // we are redirecting our user from our app to the settings page of our app.
+            dialog.cancel();
+            // below is the intent from which we are redirecting our user.
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            Uri uri = Uri.fromParts("package", getPackageName(), null);
+            intent.setData(uri);
+            startActivityForResult(intent, 101);
+        });
+        builder.setNegativeButton("Cancel", (dialog, which) -> {
+            // this method is called when user click on negative button.
+            dialog.cancel();
+        });
+        // below line is used to display our dialog
+        builder.show();
     }
 
     @Override

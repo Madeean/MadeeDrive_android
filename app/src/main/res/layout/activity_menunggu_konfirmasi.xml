@@ -30,17 +30,17 @@
         android:layout_height="wrap_content"/>
 
     <Button
-        android:padding="10dp"
+        android:id="@+id/btn_notify_waiting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_menunggu_konfirmasi_waiting"
         android:layout_centerHorizontal="true"
         android:layout_marginVertical="20dp"
-        android:layout_below="@id/tv_menunggu_konfirmasi_waiting"
         android:background="@drawable/btn_18_blue"
-        android:id="@+id/btn_notify_waiting"
-        android:textColor="@color/abuabumuda"
-        android:textAllCaps="false"
+        android:padding="10dp"
         android:text="Notify Admin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:textAllCaps="false"
+        android:textColor="@color/abuabumuda" />
 
     <Button
         android:padding="10dp"

@@ -10,8 +10,8 @@ android {
         applicationId "com.madeean.madeedrive"
         minSdk 26
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "3.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,6 +38,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 }
 
@@ -75,4 +79,5 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
 
+    implementation 'com.karumi:dexter:6.2.2'
 }
